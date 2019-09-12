@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "eslint-config-standard",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off"
+  }
+}

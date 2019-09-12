@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": false,
+    "allowJs": false,
+    "removeComments": true,
+    "target": "es2015",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "incremental": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
