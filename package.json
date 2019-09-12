@@ -14,6 +14,13 @@
   },
   "author": "Raphael Pigulla <pigulla@four66.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pigulla/jest-environment-nock-axios.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pigulla/jest-environment-nock-axios/issues"
+  },
   "devDependencies": {
     "@types/nock": "^10.0.3",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
