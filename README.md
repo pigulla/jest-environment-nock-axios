@@ -31,3 +31,36 @@ afterEach(function () {
     }
 });
 ```
+
+### Example
+```typescript
+/**
+ * @jest-environment nock-axios
+ */
+import axios from 'axios';
+import nock from 'nock';
+
+describe('This test', function () {
+    it('will pass', async function () {
+        nock('http://test.invalid')
+            .get('data.json')
+            .reply(200, { name: 'Hairy Potter' });
+        
+        await result = axios.get('http://test.invalid/data.json');
+        expect(result).toEqual({ name: 'Hairy Potter' });
+    });
+
+    it('will fail', function () {
+        // ...because the host is not mocked
+        await axios.get('http://news.ycombinator.com');
+    });
+    
+    it('will fail if the above "setupFilesAfterEnv" hook is configured')
+        nock('http://test.invalid')
+            .get('no-data.json')
+            .reply(200, {});
+
+        // The mocked endpoint is never requested.
+    }); 
+})
+```
