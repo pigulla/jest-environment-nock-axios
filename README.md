@@ -50,12 +50,12 @@ describe('This test', function () {
         expect(result).toEqual({ name: 'Hairy Potter' });
     });
 
-    it('will fail', function () {
+    it('will fail', async function () {
         // ...because the host is not mocked
         await axios.get('http://news.ycombinator.com');
     });
     
-    it('will fail if the above "setupFilesAfterEnv" hook is configured')
+    it('will fail if the above "setupFilesAfterEnv" hook is configured', function () {
         nock('http://test.invalid')
             .get('no-data.json')
             .reply(200, {});
