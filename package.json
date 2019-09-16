@@ -1,7 +1,7 @@
 {
   "name": "jest-environment-nock-axios",
-  "version": "0.0.1",
-  "description": "Simple environment that disables all network connectivity via nock",
+  "version": "1.0.0",
+  "description": "Jest environment that disables all network connectivity via nock",
   "main": "dist/index.js",
   "files": [
     "dist/**/*",
@@ -14,6 +14,19 @@
   },
   "author": "Raphael Pigulla <pigulla@four66.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pigulla/jest-environment-nock-axios.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pigulla/jest-environment-nock-axios/issues"
+  },
+  "keywords": [
+    "nock",
+    "jest",
+    "axios",
+    "jest-environment"
+  ],
   "devDependencies": {
     "@types/nock": "^10.0.3",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
