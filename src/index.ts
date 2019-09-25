@@ -2,7 +2,7 @@ import nock from 'nock'
 import axios, { AxiosAdapter } from 'axios'
 
 // @ts-ignore
-import httpHdapter from 'axios/lib/adapters/http'
+import httpAdapter from 'axios/lib/adapters/http'
 
 import NodeEnvironment from 'jest-environment-node'
 
@@ -13,7 +13,7 @@ export default class NockAxiosEnvironment extends NodeEnvironment {
     await super.setup()
 
     this.axiosAdapter = axios.defaults.adapter
-    axios.defaults.adapter = httpHdapter
+    axios.defaults.adapter = httpAdapter
 
     nock.disableNetConnect()
   }
