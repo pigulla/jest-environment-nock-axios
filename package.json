@@ -1,6 +1,6 @@
 {
   "name": "jest-environment-nock-axios",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Jest environment that disables all network connectivity via nock",
   "main": "dist/index.js",
   "files": [
@@ -8,8 +8,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/ && tsc --build tsconfig.json",
+    "test": "npm run lint",
+    "install-peers": "npm i --no-save axios nock jest-environment-node",
+    "build": "rm -rf dist/ && npm run install-peers && tsc --build tsconfig.json",
     "lint": "eslint --ext=.ts ."
   },
   "author": "Raphael Pigulla <pigulla@four66.com>",
@@ -28,10 +29,10 @@
     "jest-environment"
   ],
   "devDependencies": {
-    "@types/nock": "^10.0.3",
-    "@typescript-eslint/eslint-plugin": "^2.2.0",
-    "@typescript-eslint/parser": "^2.2.0",
-    "eslint": "^6.3.0",
+    "@types/nock": "^11.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "^6.4.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
@@ -43,5 +44,6 @@
     "axios": ">=0.19",
     "jest-environment-node": ">=24",
     "nock": ">=10"
-  }
+  },
+  "dependencies": {}
 }

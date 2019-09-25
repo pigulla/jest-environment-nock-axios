@@ -15,6 +15,8 @@ export default class NockAxiosEnvironment extends NodeEnvironment {
     this.axiosAdapter = axios.defaults.adapter
     axios.defaults.adapter = httpAdapter
 
+    this.global.nock = nock
+
     nock.disableNetConnect()
   }
 
