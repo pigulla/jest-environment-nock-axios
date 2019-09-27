@@ -1,6 +1,6 @@
 {
   "name": "jest-environment-nock-axios",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Jest environment that disables all network connectivity via nock",
   "main": "dist/index.js",
   "files": [
