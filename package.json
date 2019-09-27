@@ -10,7 +10,7 @@
   "scripts": {
     "test": "npm run lint",
     "install-peers": "npm i --no-save axios nock jest-environment-node",
-    "build": "rm -rf dist/ && npm run install-peers && tsc --build tsconfig.json",
+    "build": "rm -rf dist/ node_modules/ && npm i && npm run install-peers && tsc --build tsconfig.json",
     "lint": "eslint --ext=.ts ."
   },
   "author": "Raphael Pigulla <pigulla@four66.com>",

@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.1.0] - 2019-09-25
+## [1.1.0] - 2019-09-27
 ### 
 - inject `nock` into the Jest's global namespace
 
