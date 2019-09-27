@@ -15,13 +15,17 @@ Install as usual with `npm install -D jest-environment-nock-axios` (or the `yarn
 To run a test in this environment set the [testEnvironment](https://jestjs.io/docs/en/configuration#testenvironment-string)
 option.
 
+### Gotchas
+
+Jest by design [doesn't implement the require cache](https://github.com/facebook/jest/issues/5120#issuecomment-352547897). This means that the nock module configured by the environment is different from the module your tests get. To solve this that instance is injected into the global scope (see the example below).
+
 ### Tips
 
 It's a good idea to verify test that no mocked requests are pending. One way to do that is to run the
 following code after each test (e.g. using Jest's
 [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration#setupFilesAfterEnv-array)) config option:
 ```javascript
-import nock = require('nock');
+const nock = global.nock; // See the 'Gotcha' section above
 
 afterEach(function () {
     const pendingMocks = nock.pendingMocks();
@@ -38,16 +42,17 @@ afterEach(function () {
  * @jest-environment nock-axios
  */
 import axios from 'axios';
-import nock from 'nock';
 
 describe('This test', function () {
+    const nock = global.nock; // See the 'Gotcha' section above
+
     it('will pass', async function () {
         nock('http://test.invalid')
-            .get('data.json')
+            .get('/data.json')
             .reply(200, { name: 'Hairy Potter' });
         
-        await result = axios.get('http://test.invalid/data.json');
-        expect(result).toEqual({ name: 'Hairy Potter' });
+        const result = await axios.get('http://test.invalid/data.json');
+        expect(result.data).toEqual({ name: 'Hairy Potter' });
     });
 
     it('will fail', async function () {
@@ -55,9 +60,9 @@ describe('This test', function () {
         await axios.get('http://news.ycombinator.com');
     });
     
-    it('will fail if the above "setupFilesAfterEnv" hook is configured', function () {
-        nock('http://test.invalid')
-            .get('no-data.json')
+    it('will fail if the above "setupFilesAfterEnv" hook is configured', async function () {
+        await nock('http://test.invalid')
+            .get('/no-data.json')
             .reply(200, {});
 
         // The mocked endpoint is never requested.
